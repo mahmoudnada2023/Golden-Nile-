@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Mail\UserVerify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
@@ -42,7 +43,8 @@ class AuthController extends Controller
             $requestData['company_paper_attachment'] = 'public/uploads/'.$fileName;
             }
               $user = User::create($requestData);
-        // Mail::to($request->email)->send(new \App\Mail\UserVerify($code));
+
+        Mail::to($request->email)->send(new UserVerify($code));
         return response()->json(['message'=>__('lang.userCreated')],200);
     }
 

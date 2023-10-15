@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:View User|Edit User', ['only' => ['index', 'store']]);
+        $this->middleware('permission:View User|Edit User', ['only' => ['index', 'store']]); 
         $this->middleware('permission:Edit User', ['only' => ['edit', 'update']]);
         $this->middleware('permission:Send Email', ['only' => ['sendEmail']]);
     }

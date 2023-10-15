@@ -16,16 +16,19 @@ class ContactUsAPIController extends AppBaseController
 {
     public function store(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(),
+        $validator = Validator::make($request->all(),
             ContactUs::$rules,
         );
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 403);
+        if($validator->fails()){
+            return response()->json(['errors'=>$validator->errors()],403);
         }
+
         $input = $request->all();
-        ContactUs::create($input);
-        return response()->json(['message' => __('lang.created')], 200);
+
+        $contactUs = ContactUs::create($input);
+
+        return response()->json(['message' => __('lang.created')],200);
     }
+
 }

@@ -12,6 +12,7 @@ class Admin extends Authenticatable
     use HasFactory, HasRoles;
 
     protected $fillable = ['name', 'email', 'password'];
+
     static $rules = [
         'name' => 'required|string|min:5|max:255',
         'email' => 'required|email',

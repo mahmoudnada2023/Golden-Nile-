@@ -4,10 +4,10 @@
     <thead>
         <tr class="fw-6 fw-semibold text-gray-600">
             <th class="min-w-250px">{{ __('lang.name') }}</th>
-            <th class="min-w-250px">{{ __('lang.email') }}</th>
-            <th class="min-w-250px">{{ __('lang.phone') }}</th>
             <th class="min-w-250px">{{ __('lang.title') }}</th>
             <th class="min-w-250px">{{ __('lang.subject') }}</th>
+            <th class="min-w-250px">{{ __('lang.email') }}</th>
+            <th class="min-w-250px">{{ __('lang.phone') }}</th>
             {{-- <th class="min-w-150px">{{ __('lang.actions') }}</th> --}}
         </tr>
     </thead>
@@ -20,16 +20,17 @@
                 <span class="badge badge-light-success fs-7 fw-bold">{{ $contactus->name }}</span>
             </td>
             <td>
-                <span class="fs-7 fw-bold">{{ $contactus->email }}</span>
-            </td>
-            <td>
-                <span class="badge  fs-7 fw-bold">{{ $contactus->phone }}</span>
-            </td>
-            <td>
-                <span class="badge  fs-7 fw-bold">{{ $contactus->title }}</span>
+                <span class="fs-7 fw-bold">{{ $contactus->title }}</span>
             </td>
             <td>
                 <span class="badge  fs-7 fw-bold">{{ $contactus->subject }}</span>
+            </td>
+            <td>
+                <span class="badge  fs-7 fw-bold">{{ $contactus->email }}</span>
+            </td>
+            <td>
+                <span class="badge  fs-7 fw-bold">{{ $contactus->phone }}</span>
+
             </td>
             {{-- <td>
                 <a href="{{ route('permessions.edit', $permession->id) }}" class="btn btn-sm btn-light me-2">

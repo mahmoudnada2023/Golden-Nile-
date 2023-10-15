@@ -58,8 +58,8 @@
                     <span class=" fs-7 fw-bold" >{{ $user->contact_person_phone}}</span>
                 </td>
                 <td>
-                    <a href="{{ route('download.pdf', ['user' => $user->id]) }}">Download PDF</a>
-                         </a>
+                    <a href="{{ route('download.pdf',  $user->id)}}">Download PDF</a>
+
                 </td>
                 <td>
                     @if ($user->status == 1)

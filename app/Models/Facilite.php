@@ -40,7 +40,7 @@ class Facilite extends Model
     }
 
     public function getMainPhotoAttribute()
-    {
+    { 
         return asset('uploads/facilites/' . $this->attributes['main_photo']);
     }
 

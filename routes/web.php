@@ -71,8 +71,7 @@ Route::group(
             Route::resource('subscribers', SubscriberController::class);
             Route::resource('newsletters', NewsletterController::class);
             Route::get('/blogs', [BlogController::class,'index']);
-            Route::get('/download-pdf/{user}', [DownloadFileController::class,'downloadPdf'])->name('download.pdf');
-
+            Route::get('/download-pdf/{id}', [DownloadFileController::class,'downloadPdf'])->name('download.pdf');
         });
     }
 );

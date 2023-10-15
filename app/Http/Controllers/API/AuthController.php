@@ -39,7 +39,7 @@ class AuthController extends Controller
             $file = $request->file('company_paper_attachment');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->move('public/uploads', $fileName);
-            $requestData['company_paper_attachment'] = 'public/uploads/'.$fileName;
+            $requestData['company_paper_attachment'] = asset('public/uploads/'.$fileName);
             }
               $user = User::create($requestData);
         // Mail::to($request->email)->send(new \App\Mail\UserVerify($code));

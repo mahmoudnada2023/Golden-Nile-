@@ -18,9 +18,11 @@ class WelcomeUser extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public $user;
+    public function __construct($user)
     {
-        //
+        $this->user=$user;
     }
 
     /**

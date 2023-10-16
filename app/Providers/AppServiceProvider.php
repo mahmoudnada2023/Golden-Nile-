@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Blog;
+use App\Models\User;
 use App\Observers\BlogObserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,8 +28,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Blog::observe(BlogObserver::class);
 
+        User::created()
 
-       
+
+
 
     }
 }

@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Observers\BlogObserver;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\DB;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -29,14 +29,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blog::observe(BlogObserver::class);
-
+        $notifications = DB::table('notifications')->get('id');
         User::created(function($user){
             Mail::to($user)->send(new WelcomeUser($user));
 
+
         });
 
-
-
+        view()->share('notifications',$notifications);
 
     }
 }

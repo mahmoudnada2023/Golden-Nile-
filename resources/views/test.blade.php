@@ -6,6 +6,6 @@
 <body>
 
 
-    <p>Result from custom function:{{NewUserId()}}</p>
+    <p>Result from custom function:{{$notifications}}</p>
 </body>
 </html>

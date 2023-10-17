@@ -45,9 +45,10 @@ class AuthController extends Controller
             }
             $user = User::create($requestData);
             $users =User::all();
+            $userIds = User::all();
 
-        Notification::send($users, new UserLoggedInNotification());
-        Mail::to($request->email)->send(new UserVerify($code));
+            Notification::send($users, new UserLoggedInNotification($userIds));
+            Mail::to($request->email)->send(new UserVerify($code));
         return response()->json(['message'=>__('lang.userCreated')],200);
     }
 

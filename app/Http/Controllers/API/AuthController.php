@@ -4,12 +4,13 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Mail\UserVerify;
+use App\Notifications\UserLoggedInNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Notification;
 class AuthController extends Controller
 {
     public function SignUp(Request $request){
@@ -42,8 +43,10 @@ class AuthController extends Controller
             $file->move('public/uploads', $fileName);
             $requestData['company_paper_attachment'] = 'public/uploads/'.$fileName;
             }
-              $user = User::create($requestData);
+            $user = User::create($requestData);
+            $users =User::all();
 
+        Notification::send($users, new UserLoggedInNotification());
         Mail::to($request->email)->send(new UserVerify($code));
         return response()->json(['message'=>__('lang.userCreated')],200);
     }

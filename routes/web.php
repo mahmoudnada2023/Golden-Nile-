@@ -75,6 +75,9 @@ Route::group(
         });
     }
 );
+Route::get('/test', function () {
+    return view('test');
+});
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 

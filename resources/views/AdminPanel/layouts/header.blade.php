@@ -1,5 +1,23 @@
 <!--begin::Header-->
 <!--begin::Header container-->
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+<script src="{{URL::asset('Dashboard/plugins/jquery/jquery.min.js')}}"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('9dae5ba6c86f4ef89f25', {
+      cluster: 'mt1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('app/Events/PusherNotification', function(data) {
+      alert(JSON.stringify(data));
+    });
+
+</script>
+
 <div class="app-container container-fluid d-flex align-items-stretch justify-content-between"
     id="kt_app_header_container">
     <!--begin::Sidebar mobile toggle-->
@@ -40,11 +58,18 @@
         <div class="app-navbar flex-shrink-0">
             <!--begin::User menu-->
             <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
+
                 <!--begin::Menu wrapper-->
                 <div class="cursor-pointer symbol symbol-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                     data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                     <img src="{{ asset('admin.avif') }}" class="rounded-3" alt="user" />
                 </div>
+
+
+
+
+
+
                 <!--begin::User account menu-->
                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
                     data-kt-menu="true">

@@ -2,18 +2,18 @@
 <!--begin::Header container-->
 <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 <script src="{{URL::asset('Dashboard/plugins/jquery/jquery.min.js')}}"></script>
-  <script>
+<script>
 
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('9dae5ba6c86f4ef89f25', {
-      cluster: 'mt1'
+    cluster: 'mt1'
     });
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('app/Events/PusherNotification', function(data) {
-      alert(JSON.stringify(data));
+    alert(JSON.stringify(data));
     });
 
 </script>

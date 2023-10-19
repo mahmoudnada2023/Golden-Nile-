@@ -29,14 +29,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blog::observe(BlogObserver::class);
-        $notifications = DB::table('notifications')->get('id');
+        // $notifications = DB::table('notifications')->get('id');
         User::created(function($user){
             Mail::to($user)->send(new WelcomeUser($user));
 
 
         });
 
-        view()->share('notifications',$notifications);
+        // view()->share('notifications',$notifications);
 
     }
 }

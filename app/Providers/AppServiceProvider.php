@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Mail\WelcomeUser;
 use App\Models\Blog;
+use App\Models\User;
 use App\Observers\BlogObserver;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\DB;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,8 +30,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Blog::observe(BlogObserver::class);
 
+        User::created(function($user){
+            Mail::to($user)->send(new WelcomeUser($user));
 
-       
+
+        });
+
 
     }
 }

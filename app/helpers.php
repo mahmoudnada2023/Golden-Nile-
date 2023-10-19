@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\UserLoginNotification;
 
-// function NewUserId(){
-//     // $notifications = DB::table('notifications')->get('data');
+function Notification(){
+    $UserIds=UserLoginNotification::all('data');
 
-// return $notifications;
+    return $UserIds;
 
-// }
+ }

@@ -1,22 +1,5 @@
 <!--begin::Header-->
 <!--begin::Header container-->
-<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-<script src="{{URL::asset('Dashboard/plugins/jquery/jquery.min.js')}}"></script>
-<script>
-
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('9dae5ba6c86f4ef89f25', {
-    cluster: 'mt1'
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('app/Events/PusherNotification', function(data) {
-    alert(JSON.stringify(data));
-    });
-
-</script>
 
 <div class="app-container container-fluid d-flex align-items-stretch justify-content-between"
     id="kt_app_header_container">
@@ -58,6 +41,19 @@
         <div class="app-navbar flex-shrink-0">
             <!--begin::User menu-->
             <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary btn-sm" style= "margin-left:2%;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bell fa-xl"> <span class="navbar-toggler-icon" style="color:rgba(255, 0, 0, 0.531)">{{Auth::user()->unreadNotifications->count()}}</span></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                    @foreach (Auth::user()->unreadNotifications as $notification)
+                      <li><a class="dropdown-item" href="{{ route('users.index') }}">New User : {{$notification->data['user_name']}}</br>{{$notification->data['user_createdAt']}}</a>
+                    
+
+                      @endforeach
+                    </ul>
+                  </div>
 
                 <!--begin::Menu wrapper-->
                 <div class="cursor-pointer symbol symbol-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"

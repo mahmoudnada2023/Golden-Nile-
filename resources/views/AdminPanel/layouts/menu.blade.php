@@ -72,6 +72,7 @@
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title">{{ __('lang.users') }}</span>
+                                    <i class="fa-solid fa-bell fa-xl"> <span class="navbar-toggler-icon" style="color:rgba(255, 0, 0, 0.739)">{{Auth::user()->unreadNotifications->count()}}</span></i>
                                 </a>
                                 <!--end:Menu link-->
                             </div>

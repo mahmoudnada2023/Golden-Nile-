@@ -58,6 +58,7 @@ class UserLoggedInNotification extends Notification
         return [
             'user_id'=>$this->user->id,
             'user_name'=>$this->user->name,
+            'user_createdAt'=> date('M j Y g:i A', strtotime($this->user->created_at)),
         ];
     }
 }

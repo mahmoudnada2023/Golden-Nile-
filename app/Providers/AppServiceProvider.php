@@ -30,11 +30,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Blog::observe(BlogObserver::class);
         // $notifications = DB::table('notifications')->get('id');
-        User::created(function($user){
-            Mail::to($user)->send(new WelcomeUser($user));
+        // User::created(function($user){
+        //     Mail::to($user)->send(new WelcomeUser($user));
 
 
-        });
+        // });
 
         // view()->share('notifications',$notifications);
 

@@ -16,10 +16,10 @@ class UserLoggedInNotification extends Notification
      *
      * @return void
      */
-    private $user_id;
-    public function __construct($user_id)
+    private $user;
+    public function __construct($user)
     {
-        $this->user_id=$user_id;
+        $this->user=$user;
     }
 
     /**
@@ -56,7 +56,8 @@ class UserLoggedInNotification extends Notification
     public function todatabase($notifiable)
     {
         return [
-            'user_id'=>$this->user_id,
+            'user_id'=>$this->user->id,
+            'user_name'=>$this->user->name,
         ];
     }
 }

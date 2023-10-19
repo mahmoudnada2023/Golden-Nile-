@@ -8,12 +8,14 @@ use App\Notifications\UserLoggedInNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 class AuthController extends Controller
 {
     public function SignUp(Request $request){
+
         $validator = Validator::make($request->all(),
             User::$rules,
             [
@@ -43,12 +45,12 @@ class AuthController extends Controller
             $file->move('public/uploads', $fileName);
             $requestData['company_paper_attachment'] = 'public/uploads/'.$fileName;
             }
-            $user = User::create($requestData);
-            $users =User::all();
-            $userIds = User::all();
-
-            Notification::send($users, new UserLoggedInNotification($userIds));
-            Mail::to($request->email)->send(new UserVerify($code));
+            $NewUser = User::create($requestData);
+            $users =Admin::all();
+            foreach($users as $user ){
+                $user->notify(new UserLoggedInNotification($NewUser));
+            }
+            // Mail::to($request->email)->send(new UserVerify($code));
         return response()->json(['message'=>__('lang.userCreated')],200);
     }
 

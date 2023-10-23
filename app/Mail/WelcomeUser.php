@@ -56,6 +56,9 @@ class WelcomeUser extends Mailable
      */
     public function attachments()
     {
-        return [];
+        return
+        [
+    
+        ];
     }
 }

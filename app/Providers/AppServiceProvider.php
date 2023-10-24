@@ -33,8 +33,7 @@ class AppServiceProvider extends ServiceProvider
         // User::created(function($user){
         //     Mail::to($user)->send(new WelcomeUser($user));
 
-        User::created(function($user){
-            Mail::to($user)->send(new WelcomeUser($user));
+      
 
 
 
